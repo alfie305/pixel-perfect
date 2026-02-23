@@ -18,7 +18,7 @@ const SignalCategories = () => (
           key={i}
           src={src}
           alt={`Signal category ${i + 1}`}
-          className="w-full h-auto rounded-lg"
+          className="w-full h-full object-cover rounded-lg"
         />
       ))}
     </div>
