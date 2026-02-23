@@ -1,8 +1,15 @@
-const categories = [
-  { title: "Market Systems", desc: "Price movements, inventory signals, and capital flow patterns", tier: "Free" },
-  { title: "AI & Technology", desc: "Adoption curves, tools, and infrastructure shifts reshaping the industry", tier: "Free" },
-  { title: "Brokerage Intel", desc: "Operational patterns, inefficiencies, and structural changes in brokerage models", tier: "Free" },
-  { title: "Deep Analysis", desc: "Extended logs with full data modeling and predictive frameworks", tier: "PRO" },
+import card1 from "@/assets/card-1-industry-news.png";
+import card2 from "@/assets/card-2-ai-tech.png";
+import card3 from "@/assets/card-3-market-research.png";
+import card4 from "@/assets/card-4-growing-business.png";
+import card5 from "@/assets/card-5-brokerage-intel.png";
+
+const cards = [
+  { src: card1, alt: "Industry News" },
+  { src: card2, alt: "AI & Tech Implementation" },
+  { src: card3, alt: "Market Research (AI-Powered)" },
+  { src: card4, alt: "Growing Your Business" },
+  { src: card5, alt: "Brokerage Intel (PRO)" },
 ];
 
 const SignalCategories = () => (
@@ -11,18 +18,14 @@ const SignalCategories = () => (
       Signal Categories
       <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-ink/30" />
     </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {categories.map((c) => (
-        <div key={c.title} className="ink-card rounded-lg p-6 space-y-3 hover:shadow-md transition-shadow cursor-pointer relative">
-          {c.tier === "PRO" && (
-            <span className="absolute top-4 right-4 bg-orange text-primary-foreground font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-ink">
-              PRO
-            </span>
-          )}
-          <div className="w-2 h-2 rounded-full bg-orange inline-block" />
-          <h3 className="font-display font-bold text-lg text-ink">{c.title}</h3>
-          <p className="font-body text-sm text-text-body">{c.desc}</p>
-        </div>
+    <div className="flex gap-4 overflow-x-auto pb-4">
+      {cards.map((card) => (
+        <img
+          key={card.alt}
+          src={card.src}
+          alt={card.alt}
+          className="w-[200px] md:w-[220px] lg:w-[240px] rounded-lg shadow-md flex-shrink-0 hover:shadow-lg transition-shadow cursor-pointer"
+        />
       ))}
     </div>
   </section>
