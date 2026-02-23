@@ -1,16 +1,19 @@
+import heroAstronaut from "@/assets/hero-astronaut.png";
+
 const HeroSection = () => {
   return (
     <section className="container mx-auto px-4 py-16 md:py-24">
       <div className="flex flex-col md:flex-row items-center gap-12">
-        {/* Left: Illustration placeholder */}
-        <div className="w-full md:w-[40%] flex justify-center">
-          <div className="dashed-placeholder w-[300px] h-[400px] md:w-[400px] md:h-[500px] rounded-lg relative">
-            <span>Character Illustration<br />Hero, Front View<br />~400 × 500px</span>
-            {/* Decorative elements */}
-            <span className="absolute -top-4 -right-4 text-gray-1 text-xl">✦</span>
-            <span className="absolute -bottom-3 -left-3 text-gray-1 text-lg">·  ·  ·</span>
-            <span className="absolute top-1/4 -right-8 text-gray-1 text-sm">~ ~ ~</span>
-          </div>
+        {/* Left: Illustration */}
+        <div className="w-full md:w-[45%] flex justify-center relative">
+          <img
+            src={heroAstronaut}
+            alt="The Assignment astronaut mascot"
+            className="w-[340px] md:w-[460px] lg:w-[520px] h-auto drop-shadow-lg"
+          />
+          <span className="absolute -top-4 -right-4 text-gray-1 text-xl">✦</span>
+          <span className="absolute -bottom-3 -left-3 text-gray-1 text-lg">·  ·  ·</span>
+          <span className="absolute top-1/4 -right-8 text-gray-1 text-sm">~ ~ ~</span>
         </div>
 
         {/* Right: Content */}
