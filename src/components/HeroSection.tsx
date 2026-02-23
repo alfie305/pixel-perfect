@@ -2,7 +2,7 @@ import heroAstronaut from "@/assets/hero-astronaut.png";
 
 const HeroSection = () => {
   return (
-    <section className="container mx-auto px-4 py-8 md:py-12">
+    <section className="container mx-auto px-4 py-4 md:py-6">
       <div className="flex flex-col md:flex-row items-center gap-12">
         {/* Left: Illustration */}
         <div className="w-full md:w-[45%] flex justify-center relative">
