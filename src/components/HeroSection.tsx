@@ -9,9 +9,9 @@ const HeroSection = () => {
           <img
             src={heroAstronaut}
             alt="The Assignment astronaut mascot"
-            className="w-[340px] md:w-[460px] lg:w-[520px] h-auto drop-shadow-lg"
-          />
-          <span className="absolute -top-4 -right-4 text-gray-1 text-xl">✦</span>
+            className="w-[340px] md:w-[460px] lg:w-[520px] h-auto drop-shadow-lg" />
+
+          
           <span className="absolute -bottom-3 -left-3 text-gray-1 text-lg">·  ·  ·</span>
           <span className="absolute top-1/4 -right-8 text-gray-1 text-sm">~ ~ ~</span>
         </div>
@@ -48,8 +48,8 @@ const HeroSection = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-md border border-ink bg-paper font-body text-sm text-ink placeholder:text-gray-2 focus:outline-none focus:ring-2 focus:ring-orange"
-            />
+              className="flex-1 px-4 py-3 rounded-md border border-ink bg-paper font-body text-sm text-ink placeholder:text-gray-2 focus:outline-none focus:ring-2 focus:ring-orange" />
+
             <button className="bg-orange hover:bg-orange-dark text-primary-foreground font-display font-bold text-sm px-6 py-3 rounded-md border border-ink transition-colors whitespace-nowrap">
               Join the Transmission
             </button>
@@ -57,19 +57,19 @@ const HeroSection = () => {
 
           {/* Topic pills */}
           <div className="flex flex-wrap gap-2">
-            {["Market Systems", "AI & Tech", "Brokerage Intel"].map((t) => (
-              <span
-                key={t}
-                className="px-4 py-1.5 rounded-full border border-ink text-xs font-body text-ink hover:bg-ink/5 transition-colors cursor-pointer"
-              >
+            {["Market Systems", "AI & Tech", "Brokerage Intel"].map((t) =>
+            <span
+              key={t}
+              className="px-4 py-1.5 rounded-full border border-ink text-xs font-body text-ink hover:bg-ink/5 transition-colors cursor-pointer">
+
                 {t}
               </span>
-            ))}
+            )}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
