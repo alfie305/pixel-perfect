@@ -34,7 +34,7 @@ Deno.serve(async () => {
       subtitle: p.subtitle ?? null,
       slug: p.slug ?? null,
       status: p.status ?? null,
-      web_url: p.url ?? null,
+      web_url: p.web_url ?? p.url ?? null,
       thumbnail_url: p.thumbnail_url ?? null,
       preview_text: p.preview_text ?? null,
       publish_date: p.publish_date ? new Date(p.publish_date * 1000).toISOString() : null,
@@ -42,7 +42,7 @@ Deno.serve(async () => {
     }));
 
     // 3. Upsert into Supabase via REST API
-    const sbRes = await fetch(`${SUPABASE_URL}/rest/v1/posts`, {
+    const sbRes = await fetch(`${SUPABASE_URL}/rest/v1/posts?on_conflict=beehiiv_id`, {
       method: 'POST',
       headers: {
         'apikey': SUPABASE_SERVICE_KEY,
