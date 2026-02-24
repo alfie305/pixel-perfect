@@ -7,8 +7,8 @@ import signal5 from "@/assets/signal-5.png";
 const cards = [signal1, signal2, signal3, signal4, signal5];
 
 const SignalCategories = () => (
-  <section className="container mx-auto px-4 py-12">
-    <h2 className="font-display font-bold text-2xl text-ink mb-8 relative inline-block">
+  <section className="container mx-auto px-4 py-4">
+    <h2 className="font-display font-bold text-2xl text-ink mb-3 relative inline-block">
       Signal Categories
       <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-ink/30" />
     </h2>
