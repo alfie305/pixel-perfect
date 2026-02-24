@@ -18,7 +18,7 @@ const SignalCategories = () => (
           key={i}
           src={src}
           alt={`Signal category ${i + 1}`}
-          className="flex-1 min-w-0 h-[28rem] md:h-[40rem] lg:h-[44rem] object-cover rounded-lg"
+          className="flex-1 min-w-0 h-[28rem] md:h-[40rem] lg:h-[44rem] object-cover object-center rounded-lg w-full"
         />
       ))}
     </div>
