@@ -20,7 +20,7 @@ const SignalCategories = () => (
           <img
             src={src}
             alt={`Signal category ${i + 1}`}
-            className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-110"
+            className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-110"
           />
         </div>
       ))}
