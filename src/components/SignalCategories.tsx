@@ -18,7 +18,7 @@ const SignalCategories = () => (
           key={i}
           src={src}
           alt={`Signal category ${i + 1}`}
-          className="flex-1 min-w-0 h-96 md:h-[32rem] object-cover rounded-lg"
+          className="flex-1 min-w-0 h-96 md:h-[32rem] object-cover rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_4px_hsl(var(--orange)/0.35)] hover:scale-[1.02]"
         />
       ))}
     </div>
