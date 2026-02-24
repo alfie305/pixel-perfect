@@ -12,13 +12,13 @@ const SignalCategories = () => (
       Signal Categories
       <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-ink/30" />
     </h2>
-    <div className="flex gap-0.5">
+    <div className="flex gap-0.5 h-[28rem] md:h-[40rem] lg:h-[44rem]">
       {cards.map((src, i) => (
         <img
           key={i}
           src={src}
           alt={`Signal category ${i + 1}`}
-          className="flex-1 min-w-0 rounded-lg w-full"
+          className="flex-1 min-w-0 h-full w-full object-cover rounded-lg"
         />
       ))}
     </div>
