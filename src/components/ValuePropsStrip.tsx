@@ -6,7 +6,7 @@ const props = [
 
 const ValuePropsStrip = () =>
 <section className="container mx-auto px-4 py-12">
-    
+    <div className="ink-divider mb-10" />
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {props.map((p, i) =>
     <div key={p.title} className={`text-center space-y-3 ${i < 2 ? "md:border-r md:border-ink/20" : ""}`}>
