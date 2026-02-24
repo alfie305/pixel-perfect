@@ -12,9 +12,9 @@ const SignalCategories = () => (
       Signal Categories
       <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-ink/30" />
     </h2>
-    <div className="flex gap-1">
+    <div className="flex gap-px">
       {cards.map((src, i) => (
-        <div key={i} className="flex-1 h-[420px] overflow-hidden rounded-lg group cursor-pointer">
+        <div key={i} className="flex-1 h-[630px] overflow-hidden rounded-lg group cursor-pointer">
           <img
             src={src}
             alt={`Signal category ${i + 1}`}
