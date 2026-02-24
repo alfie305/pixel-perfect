@@ -1,11 +1,11 @@
+import aboutCharacter from "@/assets/about-character.png";
+
 const AboutStrip = () => (
   <section className="container mx-auto px-4 py-16">
     <div className="ink-divider mb-10" />
     <div className="flex flex-col md:flex-row items-center gap-10">
       <div className="w-full md:w-[35%] flex justify-center">
-        <div className="dashed-placeholder w-[250px] h-[300px] rounded-lg">
-          Character Illustration<br />About, Side View<br />~250 × 300px
-        </div>
+        <img src={aboutCharacter} alt="The Analyst character illustration" className="w-[250px] rounded-lg" />
       </div>
       <div className="w-full md:w-[65%] space-y-5">
         <div className="font-mono text-xs text-gray-2 space-y-1 border border-gray-1 p-3 rounded-sm inline-block">
