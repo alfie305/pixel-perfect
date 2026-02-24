@@ -7,19 +7,20 @@ import signal5 from "@/assets/signal-5.png";
 const cards = [signal1, signal2, signal3, signal4, signal5];
 
 const SignalCategories = () => (
-  <section className="container mx-auto px-4 py-1">
+  <section className="w-full px-4 py-1">
     <h2 className="font-display font-bold text-2xl text-ink mb-3 relative inline-block">
       Signal Categories
       <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-ink/30" />
     </h2>
-    <div className="flex gap-0.5">
+    <div className="flex gap-1">
       {cards.map((src, i) => (
-        <img
-          key={i}
-          src={src}
-          alt={`Signal category ${i + 1}`}
-          className="flex-1 min-w-0 w-0 rounded-lg"
-        />
+        <div key={i} className="flex-1 overflow-hidden rounded-lg group cursor-pointer">
+          <img
+            src={src}
+            alt={`Signal category ${i + 1}`}
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+          />
+        </div>
       ))}
     </div>
   </section>
