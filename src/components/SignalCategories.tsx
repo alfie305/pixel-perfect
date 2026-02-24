@@ -14,7 +14,7 @@ const SignalCategories = () => (
     </h2>
     <div className="flex gap-1">
       {cards.map((src, i) => (
-        <div key={i} className="flex-1 overflow-hidden rounded-lg group cursor-pointer">
+        <div key={i} className="flex-1 h-[420px] overflow-hidden rounded-lg group cursor-pointer">
           <img
             src={src}
             alt={`Signal category ${i + 1}`}
