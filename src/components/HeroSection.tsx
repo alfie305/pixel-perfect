@@ -13,7 +13,7 @@ const HeroSection = () => {
 
           
           <span className="absolute -bottom-3 -left-3 text-gray-1 text-lg">·  ·  ·</span>
-          <span className="absolute top-1/4 -right-8 text-gray-1 text-sm">~ ~ ~</span>
+          
         </div>
 
         {/* Right: Content */}
