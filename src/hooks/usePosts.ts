@@ -9,7 +9,8 @@ export function useLatestPost() {
       const { data, error } = await supabase
         .from('posts')
         .select('*')
-        .order('created_at', { ascending: false })
+        .eq('status', 'confirmed')
+        .order('publish_date', { ascending: false })
         .limit(1)
         .maybeSingle();
 
@@ -26,7 +27,8 @@ export function useRecentPosts(limit = 6) {
       const { data, error } = await supabase
         .from('posts')
         .select('*')
-        .order('created_at', { ascending: false })
+        .eq('status', 'confirmed')
+        .order('publish_date', { ascending: false })
         .limit(limit);
 
       if (error) throw error;
