@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const testimonials = [
   { quote: "Finally, someone cutting through the noise. This is my Monday morning briefing now.", name: "Sarah K.", city: "Austin, TX" },
   { quote: "The 4-part log format is genius. Observation → Optimization. That's how I think about my business.", name: "Marcus D.", city: "Denver, CO" },
@@ -18,19 +20,32 @@ const TestimonialCard = ({ quote, name, city }: { quote: string; name: string; c
 
 const Testimonials = () => (
   <section className="py-12 overflow-hidden">
-    <div className="container mx-auto px-4 mb-8">
+    <motion.div
+      className="container mx-auto px-4 mb-8"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
       <h2 className="font-display font-bold text-2xl text-ink relative inline-block">
         From the Field — What Agents Are Saying
         <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-ink/30" />
       </h2>
-    </div>
-    <div className="relative group">
+    </motion.div>
+
+    <motion.div
+      className="relative group"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
       <div className="flex animate-marquee hover:[animation-play-state:paused]">
         {[...testimonials, ...testimonials].map((t, i) => (
           <TestimonialCard key={i} {...t} />
         ))}
       </div>
-    </div>
+    </motion.div>
   </section>
 );
 

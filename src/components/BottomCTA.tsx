@@ -1,11 +1,33 @@
+import { motion } from 'framer-motion';
+
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 25 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+};
+
 const BottomCTA = () => (
   <section className="bg-ink/5 py-16">
-    <div className="container mx-auto px-4 text-center max-w-lg space-y-5">
-      <h2 className="font-display font-bold text-3xl text-ink">Receive Field Logs Directly</h2>
-      <p className="font-body text-text-body">
+    <motion.div
+      className="container mx-auto px-4 text-center max-w-lg space-y-5"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: '-80px' }}
+      variants={stagger}
+    >
+      <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl text-ink">
+        Receive Field Logs Directly
+      </motion.h2>
+
+      <motion.p variants={fadeUp} className="font-body text-text-body">
         Structured intelligence. No noise. No hype.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      </motion.p>
+
+      <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
         <input
           type="email"
           placeholder="Enter your email"
@@ -14,11 +36,12 @@ const BottomCTA = () => (
         <button className="bg-orange hover:bg-orange-dark text-primary-foreground font-display font-bold text-sm px-6 py-3 rounded-md border border-ink transition-colors whitespace-nowrap">
           Join Transmission
         </button>
-      </div>
-      <p className="font-mono text-[11px] text-gray-2">
+      </motion.div>
+
+      <motion.p variants={fadeUp} className="font-mono text-[11px] text-gray-2">
         Free · No clickbait · Unsubscribe anytime
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   </section>
 );
 

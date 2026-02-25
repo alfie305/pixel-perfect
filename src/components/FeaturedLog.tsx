@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useLatestPost } from '@/hooks/usePosts';
 
 const FeaturedLog = () => {
@@ -13,21 +14,37 @@ const FeaturedLog = () => {
 
   return (
     <section className="container mx-auto px-4 py-12">
-      <h2 className="font-display font-bold text-2xl text-ink mb-8 relative inline-block">
+      <motion.h2
+        className="font-display font-bold text-2xl text-ink mb-8 relative inline-block"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         Latest Field Log
         <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-ink/30" style={{ borderRadius: '50%' }} />
-      </h2>
+      </motion.h2>
 
-      <div className="ink-card rounded-lg overflow-hidden flex flex-col md:flex-row">
+      <motion.div
+        className="ink-card rounded-lg overflow-hidden flex flex-col md:flex-row"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+      >
         {/* Thumbnail */}
-        <div className="md:w-[40%]">
+        <div className="md:w-[40%] overflow-hidden">
           {isLoading ? (
             <div className="w-full h-[250px] md:h-full bg-ink/10 animate-pulse" />
           ) : post?.thumbnail_url ? (
-            <img
+            <motion.img
               src={post.thumbnail_url}
               alt={post.title ?? 'Featured log'}
               className="w-full h-[250px] md:h-full object-cover"
+              initial={{ scale: 1.08 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             />
           ) : (
             <div className="dashed-placeholder w-full h-[250px] md:h-full rounded-md p-6">
@@ -37,7 +54,13 @@ const FeaturedLog = () => {
         </div>
 
         {/* Content */}
-        <div className="md:w-[60%] p-6 md:p-8 flex flex-col justify-center space-y-4">
+        <motion.div
+          className="md:w-[60%] p-6 md:p-8 flex flex-col justify-center space-y-4"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        >
           {isLoading ? (
             <>
               <div className="h-3 w-48 bg-ink/10 animate-pulse rounded" />
@@ -48,12 +71,8 @@ const FeaturedLog = () => {
             </>
           ) : post ? (
             <>
-              <div className="font-mono text-xs text-gray-2">
-                {formattedDate}
-              </div>
-              <h3 className="font-display font-bold text-xl md:text-2xl text-ink">
-                {post.title}
-              </h3>
+              <div className="font-mono text-xs text-gray-2">{formattedDate}</div>
+              <h3 className="font-display font-bold text-xl md:text-2xl text-ink">{post.title}</h3>
               <p className="font-body text-text-body text-sm leading-relaxed">
                 {post.subtitle ?? post.preview_text}
               </p>
@@ -69,8 +88,8 @@ const FeaturedLog = () => {
           ) : (
             <p className="font-body text-text-body text-sm">No posts published yet.</p>
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
