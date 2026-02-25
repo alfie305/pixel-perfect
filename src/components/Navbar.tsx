@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-scroll";
 import { Search } from "lucide-react";
+
+const navLinks = [
+  { label: "Logs", to: "logs" },
+  { label: "Latest", to: "latest" },
+  { label: "Protocol", to: "protocol" },
+  { label: "The Analyst", to: "the-analyst" },
+];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,19 +31,33 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="#" className="font-body text-sm text-text-body hover:text-ink transition-colors">Logs</a>
-          <a href="#" className="font-body text-sm text-text-body hover:text-ink transition-colors">Latest</a>
-          <a href="#" className="font-body text-sm text-text-body hover:text-ink transition-colors">Protocol</a>
-          <a href="#" className="font-body text-sm text-text-body hover:text-ink transition-colors">The Analyst</a>
+          {navLinks.map(({ label, to }) => (
+            <Link
+              key={to}
+              to={to}
+              smooth
+              duration={600}
+              offset={-70}
+              className="font-body text-sm text-text-body hover:text-ink transition-colors cursor-pointer"
+            >
+              {label}
+            </Link>
+          ))}
         </div>
 
         <div className="flex items-center gap-3">
           <button className="text-ink hover:text-orange transition-colors" aria-label="Search">
             <Search className="w-5 h-5" />
           </button>
-          <button className="bg-orange hover:bg-orange-dark text-primary-foreground font-display font-bold text-sm px-4 py-2 rounded-md border border-ink transition-colors">
+          <Link
+            to="bottom-cta"
+            smooth
+            duration={600}
+            offset={-70}
+            className="bg-orange hover:bg-orange-dark text-primary-foreground font-display font-bold text-sm px-4 py-2 rounded-md border border-ink transition-colors cursor-pointer"
+          >
             Join Transmission
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

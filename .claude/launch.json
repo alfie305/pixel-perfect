@@ -4,8 +4,9 @@
     {
       "name": "pixel-perfect",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 8080
+      "runtimeArgs": ["run", "dev", "--", "--port", "8080", "--host"],
+      "port": 8080,
+      "cwd": "/Users/alfie/Desktop/pixel-perfect"
     }
   ]
 }

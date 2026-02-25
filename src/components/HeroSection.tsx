@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
+import CountUp from 'react-countup';
+import Tilt from 'react-parallax-tilt';
 import heroAstronaut from "@/assets/hero-astronaut.png";
 
 const fadeUp = {
@@ -20,18 +23,27 @@ const HeroSection = () => {
   return (
     <section className="container mx-auto px-4 py-4 md:py-6">
       <div className="flex flex-col md:flex-row items-center gap-12">
-        {/* Left: Illustration */}
+
+        {/* Left: Illustration with 3D tilt */}
         <motion.div
           className="w-full md:w-[45%] flex justify-center relative"
           initial="hidden"
           animate="show"
           variants={slideLeft}
         >
-          <img
-            src={heroAstronaut}
-            alt="The Assignment astronaut mascot"
-            className="w-[340px] md:w-[460px] lg:w-[520px] h-auto drop-shadow-lg"
-          />
+          <Tilt
+            tiltMaxAngleDegree={8}
+            scale={1.02}
+            transitionSpeed={400}
+            glareEnable={false}
+            className="w-[340px] md:w-[460px] lg:w-[520px]"
+          >
+            <img
+              src={heroAstronaut}
+              alt="The Assignment astronaut mascot"
+              className="w-full h-auto drop-shadow-lg"
+            />
+          </Tilt>
           <span className="absolute -bottom-3 -left-3 text-gray-1 text-lg">·  ·  ·</span>
           <span className="absolute top-1/4 -right-8 text-gray-1 text-sm">~ ~ ~</span>
         </motion.div>
@@ -43,14 +55,28 @@ const HeroSection = () => {
           animate="show"
           variants={stagger}
         >
-          {/* Meta block */}
+          {/* Meta block with typewriter status */}
           <motion.div
             variants={fadeUp}
             className="font-mono text-xs text-gray-2 space-y-1 border border-gray-1 p-3 rounded-sm inline-block"
           >
             <div>Field Assignment: Earth</div>
             <div>Sector: Residential Real Estate</div>
-            <div>Status: <span className="text-orange">Active</span></div>
+            <div>
+              Status:{' '}
+              <span className="text-orange">
+                <TypeAnimation
+                  sequence={[
+                    'Active', 2500,
+                    'Transmitting...', 1800,
+                    'Scanning signals...', 1800,
+                    'Active', 2500,
+                  ]}
+                  repeat={Infinity}
+                  speed={45}
+                />
+              </span>
+            </div>
           </motion.div>
 
           <motion.h1
@@ -64,14 +90,18 @@ const HeroSection = () => {
             Structured field logs analyzing market shifts, AI infrastructure, brokerage systems, and capital flows — decoded and delivered.
           </motion.p>
 
-          {/* Social proof */}
+          {/* Social proof with animated count */}
           <motion.div variants={fadeUp} className="flex items-center gap-2">
             <div className="flex -space-x-2">
               <div className="w-8 h-8 rounded-full bg-gray-1 border-2 border-paper" />
               <div className="w-8 h-8 rounded-full bg-gray-2 border-2 border-paper" />
               <div className="w-8 h-8 rounded-full bg-orange/40 border-2 border-paper" />
             </div>
-            <span className="font-mono text-xs text-gray-2">Join 1,200+ agents receiving the logs</span>
+            <span className="font-mono text-xs text-gray-2">
+              Join{' '}
+              <CountUp end={1200} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              {' '}agents receiving the logs
+            </span>
           </motion.div>
 
           {/* Email form */}

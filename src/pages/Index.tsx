@@ -16,12 +16,22 @@ const Index = () => {
       <main>
         <HeroSection />
         <ValuePropsStrip />
-        <FeaturedLog />
-        <SignalCategories />
-        <RecentLogs />
-        <Testimonials />
-        <AboutStrip />
-        <BottomCTA />
+        <section id="latest">
+          <FeaturedLog />
+        </section>
+        <section id="logs">
+          <SignalCategories />
+          <RecentLogs />
+        </section>
+        <section id="the-analyst">
+          <Testimonials />
+        </section>
+        <section id="protocol">
+          <AboutStrip />
+        </section>
+        <section id="bottom-cta">
+          <BottomCTA />
+        </section>
       </main>
       <Footer />
     </div>

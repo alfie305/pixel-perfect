@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
 
 const testimonials = [
   { quote: "Finally, someone cutting through the noise. This is my Monday morning briefing now.", name: "Sarah K.", city: "Austin, TX" },
@@ -10,12 +11,20 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ quote, name, city }: { quote: string; name: string; city: string }) => (
-  <div className="ink-card rounded-lg p-5 min-w-[280px] max-w-[320px] shrink-0 mx-2 space-y-3">
-    <p className="font-body text-sm text-text-body italic leading-relaxed">"{quote}"</p>
-    <div className="font-mono text-xs text-gray-2">
-      {name} · {city}
+  <Tilt
+    tiltMaxAngleDegree={5}
+    scale={1.02}
+    transitionSpeed={300}
+    glareEnable={false}
+    className="min-w-[280px] max-w-[320px] shrink-0 mx-2"
+  >
+    <div className="ink-card rounded-lg p-5 space-y-3 h-full">
+      <p className="font-body text-sm text-text-body italic leading-relaxed">"{quote}"</p>
+      <div className="font-mono text-xs text-gray-2">
+        {name} · {city}
+      </div>
     </div>
-  </div>
+  </Tilt>
 );
 
 const Testimonials = () => (
