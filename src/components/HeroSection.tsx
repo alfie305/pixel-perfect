@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import CountUp from 'react-countup';
 import Tilt from 'react-parallax-tilt';
 import heroAstronaut from "@/assets/hero-astronaut.png";
+import { supabase } from '@/integrations/supabase/client';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,6 +22,28 @@ const slideLeft = {
 };
 
 const HeroSection = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || status === 'loading') return;
+    setStatus('loading');
+    try {
+      const { error } = await supabase.functions.invoke('subscribe-beehiiv', {
+        body: { email },
+      });
+      if (error) {
+        setStatus('error');
+      } else {
+        setStatus('success');
+        setEmail('');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
   return (
     <section className="container mx-auto px-4 py-4 md:py-6">
       <div className="flex flex-col md:flex-row items-center gap-12">
@@ -120,16 +144,41 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Email form */}
-          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 max-w-md">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-md border border-ink bg-paper font-body text-sm text-ink placeholder:text-gray-2 focus:outline-none focus:ring-2 focus:ring-orange"
-            />
-            <button className="bg-orange hover:bg-orange-dark text-primary-foreground font-display font-bold text-sm px-6 py-3 rounded-md border border-ink transition-colors whitespace-nowrap">
-              Join the Transmission
-            </button>
-          </motion.div>
+          <motion.form
+            variants={fadeUp}
+            className="flex flex-col sm:flex-row gap-3 max-w-md"
+            onSubmit={handleSubscribe}
+          >
+            {status === 'success' ? (
+              <div className="flex-1 px-4 py-3 rounded-md border border-orange/40 bg-orange/5 font-mono text-sm text-orange text-center">
+                ✓ You're in the transmission.
+              </div>
+            ) : (
+              <>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setStatus('idle'); }}
+                  className="flex-1 px-4 py-3 rounded-md border border-ink bg-paper font-body text-sm text-ink placeholder:text-gray-2 focus:outline-none focus:ring-2 focus:ring-orange"
+                  required
+                  disabled={status === 'loading'}
+                />
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="bg-orange hover:bg-orange-dark text-primary-foreground font-display font-bold text-sm px-6 py-3 rounded-md border border-ink transition-colors whitespace-nowrap disabled:opacity-60"
+                >
+                  {status === 'loading' ? 'Sending...' : 'Join the Transmission'}
+                </button>
+              </>
+            )}
+            {status === 'error' && (
+              <p className="text-xs text-red-500 font-mono mt-1 w-full">
+                Something went wrong — try again.
+              </p>
+            )}
+          </motion.form>
 
           {/* Topic pills */}
           <motion.div variants={fadeUp} className="flex flex-wrap gap-2">

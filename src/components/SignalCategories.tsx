@@ -40,11 +40,11 @@ const SignalCategories = () => (
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
           className="relative flex-1 h-[500px] overflow-hidden group cursor-pointer first:rounded-l-xl last:rounded-r-xl"
         >
-          {/* Image */}
-          <img
-            src={src}
-            alt={categories[i].name}
-            className="w-full h-full object-cover scale-[1.18] transition-transform duration-500 ease-out group-hover:scale-[1.28]"
+          {/* Image — background-image avoids PNG internal padding artifacts */}
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
+            style={{ backgroundImage: `url(${src})` }}
+            aria-label={categories[i].name}
           />
 
           {/* Gradient overlay */}

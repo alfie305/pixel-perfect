@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import StatsBar from "@/components/StatsBar";
 import ValuePropsStrip from "@/components/ValuePropsStrip";
 import FeaturedLog from "@/components/FeaturedLog";
 import SignalCategories from "@/components/SignalCategories";
@@ -15,6 +16,7 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <StatsBar />
         <ValuePropsStrip />
         <section id="latest">
           <FeaturedLog />
