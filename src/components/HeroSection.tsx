@@ -90,12 +90,27 @@ const HeroSection = () => {
             Structured field logs analyzing market shifts, AI infrastructure, brokerage systems, and capital flows — decoded and delivered.
           </motion.p>
 
+          {/* Latest issue link */}
+          <motion.a
+            variants={fadeUp}
+            href="#latest"
+            className="inline-flex items-center gap-1.5 font-mono text-xs text-orange hover:underline underline-offset-4"
+          >
+            ↗ Latest field log — read now
+          </motion.a>
+
           {/* Social proof with animated count */}
           <motion.div variants={fadeUp} className="flex items-center gap-2">
-            <div className="flex -space-x-2">
-              <div className="w-8 h-8 rounded-full bg-gray-1 border-2 border-paper" />
-              <div className="w-8 h-8 rounded-full bg-gray-2 border-2 border-paper" />
-              <div className="w-8 h-8 rounded-full bg-orange/40 border-2 border-paper" />
+            <div className="flex">
+              {['MR', 'JT', 'AK'].map((init, i) => (
+                <div
+                  key={init}
+                  className="w-8 h-8 rounded-full bg-orange/20 border-2 border-paper flex items-center justify-center"
+                  style={{ marginLeft: i === 0 ? 0 : '-8px' }}
+                >
+                  <span className="font-mono text-[8px] text-orange font-bold">{init}</span>
+                </div>
+              ))}
             </div>
             <span className="font-mono text-xs text-gray-2">
               Join{' '}

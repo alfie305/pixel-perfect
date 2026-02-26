@@ -6,7 +6,9 @@ const Footer = () => (
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full dashed-placeholder text-[6px]">Logo</div>
+            <div className="w-8 h-8 rounded-full bg-orange flex items-center justify-center shrink-0">
+              <span className="font-display font-bold text-[11px] text-white leading-none">TA</span>
+            </div>
             <span className="font-display font-bold text-ink">The Assignment</span>
           </div>
           <p className="font-mono text-[11px] text-gray-2">Assignment Status: Ongoing</p>

@@ -10,18 +10,33 @@ const testimonials = [
   { quote: "Stopped reading three other newsletters after subscribing to this one.", name: "Brian T.", city: "Phoenix, AZ" },
 ];
 
+const getInitials = (name: string) =>
+  name.split(' ').map(n => n[0]).join('');
+
 const TestimonialCard = ({ quote, name, city }: { quote: string; name: string; city: string }) => (
   <Tilt
     tiltMaxAngleDegree={5}
     scale={1.02}
     transitionSpeed={300}
     glareEnable={false}
-    className="min-w-[280px] max-w-[320px] shrink-0 mx-2"
+    className="min-w-[290px] max-w-[330px] shrink-0 mx-2"
   >
-    <div className="ink-card rounded-lg p-5 space-y-3 h-full">
+    <div className="ink-card rounded-lg p-5 space-y-3 h-full hover:border-orange/40 transition-colors duration-200">
+      {/* Stars */}
+      <div className="text-orange text-xs tracking-wider">★★★★★</div>
+
+      {/* Quote */}
       <p className="font-body text-sm text-text-body italic leading-relaxed">"{quote}"</p>
-      <div className="font-mono text-xs text-gray-2">
-        {name} · {city}
+
+      {/* Avatar + name */}
+      <div className="flex items-center gap-2 pt-1 border-t border-ink/10">
+        <div className="w-7 h-7 rounded-full bg-orange/20 flex items-center justify-center font-mono text-[10px] text-orange font-bold shrink-0">
+          {getInitials(name)}
+        </div>
+        <div>
+          <div className="font-mono text-xs text-ink font-semibold">{name}</div>
+          <div className="font-mono text-[10px] text-gray-2">{city}</div>
+        </div>
       </div>
     </div>
   </Tilt>

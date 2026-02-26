@@ -1,6 +1,12 @@
 import { motion } from 'framer-motion';
 import { useLatestPost } from '@/hooks/usePosts';
 
+const getReadTime = (text?: string | null) => {
+  if (!text) return '~3 min read';
+  const words = text.trim().split(/\s+/).length;
+  return `~${Math.max(1, Math.ceil(words / 200))} min read`;
+};
+
 const FeaturedLog = () => {
   const { data: post, isLoading } = useLatestPost();
 
@@ -11,6 +17,8 @@ const FeaturedLog = () => {
         year: 'numeric',
       })
     : null;
+
+  const readTime = getReadTime(post?.preview_text ?? post?.subtitle);
 
   return (
     <section className="container mx-auto px-4 py-12">
@@ -35,20 +43,20 @@ const FeaturedLog = () => {
         {/* Thumbnail */}
         <div className="md:w-[40%] overflow-hidden">
           {isLoading ? (
-            <div className="w-full h-[250px] md:h-full bg-ink/10 animate-pulse" />
+            <div className="w-full h-[280px] md:h-full bg-ink/10 animate-pulse" />
           ) : post?.thumbnail_url ? (
             <motion.img
               src={post.thumbnail_url}
               alt={post.title ?? 'Featured log'}
-              className="w-full h-[250px] md:h-full object-cover"
+              className="w-full h-[280px] md:h-full object-cover"
               initial={{ scale: 1.08 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             />
           ) : (
-            <div className="dashed-placeholder w-full h-[250px] md:h-full rounded-md p-6">
-              No thumbnail yet
+            <div className="w-full h-[280px] md:h-full bg-ink/5 flex items-center justify-center">
+              <span className="font-mono text-xs text-gray-2">No image yet</span>
             </div>
           )}
         </div>
@@ -63,7 +71,8 @@ const FeaturedLog = () => {
         >
           {isLoading ? (
             <>
-              <div className="h-3 w-48 bg-ink/10 animate-pulse rounded" />
+              <div className="h-5 w-36 bg-ink/10 animate-pulse rounded" />
+              <div className="h-3 w-32 bg-ink/10 animate-pulse rounded" />
               <div className="h-7 w-full bg-ink/10 animate-pulse rounded" />
               <div className="h-4 w-4/5 bg-ink/10 animate-pulse rounded" />
               <div className="h-4 w-2/3 bg-ink/10 animate-pulse rounded" />
@@ -71,18 +80,30 @@ const FeaturedLog = () => {
             </>
           ) : post ? (
             <>
+              {/* Transmission badge */}
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-orange border border-orange/40 px-2 py-0.5 rounded-sm">
+                  Latest Transmission
+                </span>
+                <span className="font-mono text-[10px] text-gray-2">{readTime}</span>
+              </div>
+
+              {/* Date */}
               <div className="font-mono text-xs text-gray-2">{formattedDate}</div>
+
               <h3 className="font-display font-bold text-xl md:text-2xl text-ink">{post.title}</h3>
+
               <p className="font-body text-text-body text-sm leading-relaxed">
                 {post.subtitle ?? post.preview_text}
               </p>
+
               <a
                 href={post.web_url ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="self-start bg-orange hover:bg-orange-dark text-primary-foreground font-display font-bold text-sm px-6 py-2.5 rounded-md border border-ink transition-colors"
+                className="self-start bg-orange hover:bg-orange-dark text-white font-display font-bold text-sm px-6 py-2.5 rounded-md border border-ink transition-colors"
               >
-                Read Full Log
+                Read Full Log →
               </a>
             </>
           ) : (

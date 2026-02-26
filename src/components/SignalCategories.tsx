@@ -7,6 +7,14 @@ import signal5 from "@/assets/signal-5.png";
 
 const cards = [signal1, signal2, signal3, signal4, signal5];
 
+const categories = [
+  { name: "Market Systems",  desc: "Residential shifts & trends" },
+  { name: "AI & Tech",       desc: "Infrastructure & automation" },
+  { name: "Brokerage Intel", desc: "Industry moves & patterns" },
+  { name: "Capital Flows",   desc: "Investment & financing data" },
+  { name: "Field Protocol",  desc: "Agent tools & strategy" },
+];
+
 const SignalCategories = () => (
   <section className="w-full py-1">
     <motion.div
@@ -30,13 +38,27 @@ const SignalCategories = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
-          className="flex-1 h-[500px] overflow-hidden group cursor-pointer first:rounded-l-xl last:rounded-r-xl"
+          className="relative flex-1 h-[500px] overflow-hidden group cursor-pointer first:rounded-l-xl last:rounded-r-xl"
         >
+          {/* Image */}
           <img
             src={src}
-            alt={`Signal category ${i + 1}`}
+            alt={categories[i].name}
             className="w-full h-full object-cover scale-[1.18] transition-transform duration-500 ease-out group-hover:scale-[1.28]"
           />
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent pointer-events-none" />
+
+          {/* Category label */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:-translate-y-0.5 transition-transform duration-300">
+            <p className="font-display font-bold text-white text-sm leading-tight drop-shadow-sm">
+              {categories[i].name}
+            </p>
+            <p className="font-mono text-white/60 text-[10px] mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {categories[i].desc}
+            </p>
+          </div>
         </motion.div>
       ))}
     </div>

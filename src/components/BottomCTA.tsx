@@ -10,6 +10,12 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
 };
 
+const benefits = [
+  "Weekly market intelligence, decoded",
+  "No noise. No filler. 100% signal.",
+  "Unsubscribe in one click, anytime",
+];
+
 const BottomCTA = () => (
   <section className="bg-ink/5 py-16">
     <motion.div
@@ -26,6 +32,16 @@ const BottomCTA = () => (
       <motion.p variants={fadeUp} className="font-body text-text-body">
         Structured intelligence. No noise. No hype.
       </motion.p>
+
+      {/* Benefit bullets */}
+      <motion.ul variants={fadeUp} className="space-y-1.5 text-left max-w-xs mx-auto">
+        {benefits.map((b) => (
+          <li key={b} className="flex items-center gap-2 font-body text-sm text-text-body">
+            <span className="text-orange font-bold">✓</span>
+            {b}
+          </li>
+        ))}
+      </motion.ul>
 
       <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
         <input
