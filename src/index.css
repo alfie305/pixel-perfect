@@ -6,6 +6,7 @@
 
 @layer base {
   :root {
+    /* Light mode colors */
     --background: 27 26% 89%;
     --foreground: 340 8% 35%;
 
@@ -53,6 +54,62 @@
     --sidebar-border: 336 7% 30%;
     --sidebar-ring: 30 68% 64%;
   }
+
+  .dark {
+    /* Dark mode colors */
+    --background: 220 20% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 220 16% 16%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 30 68% 64%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 15% 22%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 220 15% 22%;
+    --muted-foreground: 210 10% 60%;
+
+    --accent: 30 68% 64%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 30 68% 64%;
+
+    --radius: 0.75rem;
+
+    --ink: 210 40% 96%;
+    --paper: 220 18% 12%;
+    --orange: 30 68% 64%;
+    --orange-dark: 27 40% 50%;
+    --orange-glow: 30 100% 70%;
+    --text: 210 20% 80%;
+    --text-muted: 210 10% 60%;
+    --gray-1: 220 10% 30%;
+    --gray-2: 220 8% 50%;
+
+    /* Glass morphism */
+    --glass-bg: 220 18% 12% / 0.7;
+    --glass-border: 220 30% 30% / 0.3;
+
+    --sidebar-background: 220 18% 12%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 30 68% 64%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 220 15% 22%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: 30 68% 64%;
+  }
 }
 
 @layer base {
@@ -61,8 +118,8 @@
   }
 
   body {
-    @apply text-foreground font-body;
-    background-color: hsl(var(--paper));
+    @apply text-foreground font-body transition-colors duration-300;
+    background: linear-gradient(135deg, #f5f0e8 0%, #e8dfd0 50%, #f5f0e8 100%);
     background-image: url('./assets/bg-texture.png');
     background-size: cover;
     background-attachment: fixed;
@@ -70,8 +127,49 @@
     background-position: center top;
   }
 
+  body.dark {
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #0f1419 100%);
+    background-image:
+      radial-gradient(at 20% 30%, rgba(232,153,92,0.05) 0px, transparent 50%),
+      radial-gradient(at 80% 70%, rgba(99,102,241,0.05) 0px, transparent 50%),
+      linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #0f1419 100%);
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display text-ink;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: hsl(var(--glass-bg));
+    border: 1px solid hsl(var(--glass-border));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 12px;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    border-color: hsl(var(--orange) / 0.5);
+    box-shadow: 0 0 24px rgba(232, 153, 92, 0.2);
+    transform: translateY(-4px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, hsl(var(--orange)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cta-button-primary {
+    @apply bg-orange text-white font-display font-bold px-8 py-4 rounded-lg;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-glow-md;
+    @apply border border-orange-dark;
   }
 }
 

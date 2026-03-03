@@ -18,6 +18,21 @@ export default {
         body: ["DM Sans", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
+      fontSize: {
+        'hero': ['4.5rem', { lineHeight: '1.1', fontWeight: '800' }],
+        'display-lg': ['3.5rem', { lineHeight: '1.2', fontWeight: '700' }],
+        'display-md': ['2.5rem', { lineHeight: '1.3', fontWeight: '700' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.7' }],
+        'body': ['1rem', { lineHeight: '1.6' }],
+        'caption': ['0.875rem', { lineHeight: '1.5' }],
+        'mono-sm': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.02em' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -77,6 +92,15 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        'glow-sm': '0 0 20px rgba(232, 153, 92, 0.3)',
+        'glow-md': '0 0 40px rgba(232, 153, 92, 0.4)',
+        'lift': '0 10px 40px -10px rgba(0, 0, 0, 0.5)',
+      },
+      backdropBlur: {
+        'xs': '2px',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -90,11 +114,31 @@ export default {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 20px rgba(232, 153, 92, 0.3)" },
+          "50%": { boxShadow: "0 0 40px rgba(232, 153, 92, 0.6)" },
+        },
+        "slide-up": {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "marquee": "marquee 30s linear infinite",
+        "float": "float 6s ease-in-out infinite",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "slide-up": "slide-up 0.5s ease-out",
+        "fade-in": "fade-in 0.6s ease-out",
       },
     },
   },
