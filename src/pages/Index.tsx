@@ -1,8 +1,9 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import StatsBar from "@/components/StatsBar";
-import ValuePropsStrip from "@/components/ValuePropsStrip";
+import BrokerageMarquee from "@/components/BrokerageMarquee";
+import NewsletterFeature from "@/components/NewsletterFeature";
 import FeaturedLog from "@/components/FeaturedLog";
+import TopicsFeature from "@/components/TopicsFeature";
 import SignalCategories from "@/components/SignalCategories";
 import RecentLogs from "@/components/RecentLogs";
 import Testimonials from "@/components/Testimonials";
@@ -16,8 +17,9 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <StatsBar />
-        <ValuePropsStrip />
+        <BrokerageMarquee />
+        <NewsletterFeature />
+        <TopicsFeature />
         <section id="latest">
           <FeaturedLog />
         </section>

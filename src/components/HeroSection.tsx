@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import CountUp from 'react-countup';
+import Tilt from 'react-parallax-tilt';
 import heroAstronaut from "@/assets/hero-astronaut.png";
 import SubscribeModal from './SubscribeModal';
 
@@ -15,13 +16,9 @@ const stagger = {
   show: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
 };
 
-const float = {
-  hidden: { opacity: 0, scale: 0.9 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 1 }
-  },
+const slideLeft = {
+  hidden: { opacity: 0, x: -40 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.8 } },
 };
 
 const HeroSection = () => {
@@ -29,27 +26,36 @@ const HeroSection = () => {
 
   return (
     <section className="container mx-auto px-4 py-12 md:py-20">
-      <div className="flex flex-col items-center text-center space-y-8 max-w-5xl mx-auto">
+      <div className="flex flex-col md:flex-row items-center gap-12">
 
-        {/* Astronaut - Centered and Enlarged */}
+        {/* Left: Illustration with 3D tilt */}
         <motion.div
-          className="w-full max-w-[700px] mb-4"
+          className="w-full md:w-[45%] flex justify-center relative"
           initial="hidden"
           animate="show"
-          variants={float}
+          variants={slideLeft}
         >
-          <div className="animate-float">
+          <Tilt
+            tiltMaxAngleX={8}
+            tiltMaxAngleY={8}
+            scale={1.02}
+            transitionSpeed={400}
+            glareEnable={false}
+            className="w-[340px] md:w-[460px] lg:w-[520px]"
+          >
             <img
               src={heroAstronaut}
               alt="The Assignment astronaut mascot"
               className="w-full h-auto drop-shadow-2xl"
             />
-          </div>
+          </Tilt>
+          <span className="absolute -bottom-3 -left-3 text-gray-1 text-lg">·  ·  ·</span>
+          <span className="absolute top-1/4 -right-8 text-gray-1 text-sm">~ ~ ~</span>
         </motion.div>
 
-        {/* Content - Below Astronaut */}
+        {/* Right: Content */}
         <motion.div
-          className="space-y-8 w-full"
+          className="w-full md:w-[55%] space-y-6"
           initial="hidden"
           animate="show"
           variants={stagger}
@@ -57,7 +63,7 @@ const HeroSection = () => {
           {/* Meta block with glass effect */}
           <motion.div
             variants={fadeUp}
-            className="glass-card font-mono text-xs space-y-1.5 px-6 py-4 inline-block mx-auto border border-border/50"
+            className="glass-card font-mono text-xs space-y-1.5 px-6 py-4 inline-block border border-border/50"
           >
             <div className="text-text-muted">Field Assignment: Earth</div>
             <div className="text-text-muted">Sector: Residential Real Estate</div>
@@ -81,7 +87,7 @@ const HeroSection = () => {
           {/* Headline with Gradient */}
           <motion.h1
             variants={fadeUp}
-            className="font-display font-extrabold text-4xl md:text-5xl lg:text-hero leading-tight gradient-text px-4"
+            className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-tight text-ink"
           >
             Operational Intelligence for Agents Navigating Chaos
           </motion.h1>
@@ -89,7 +95,7 @@ const HeroSection = () => {
           {/* Subheadline */}
           <motion.p
             variants={fadeUp}
-            className="font-body text-text text-lg md:text-body-lg max-w-2xl mx-auto px-4"
+            className="font-body text-text text-lg md:text-xl leading-relaxed max-w-xl"
           >
             Structured field logs analyzing market shifts, AI infrastructure, brokerage systems, and capital flows — decoded and delivered.
           </motion.p>
@@ -104,12 +110,12 @@ const HeroSection = () => {
           </motion.a>
 
           {/* Social proof with animated count */}
-          <motion.div variants={fadeUp} className="flex items-center justify-center gap-3">
+          <motion.div variants={fadeUp} className="flex items-center gap-3">
             <div className="flex">
               {['MR', 'JT', 'AK'].map((init, i) => (
                 <div
                   key={init}
-                  className="w-10 h-10 rounded-full bg-orange/20 border-2 border-orange/30 flex items-center justify-center backdrop-blur-sm"
+                  className="w-10 h-10 rounded-full bg-card border-2 border-orange/40 flex items-center justify-center shadow-clay-sm"
                   style={{ marginLeft: i === 0 ? 0 : '-12px', zIndex: 3 - i }}
                 >
                   <span className="font-mono text-[10px] text-orange font-bold">{init}</span>
@@ -123,14 +129,11 @@ const HeroSection = () => {
             </span>
           </motion.div>
 
-          {/* Subscribe button - Large with glow */}
-          <motion.div
-            variants={fadeUp}
-            className="pt-4"
-          >
+          {/* Subscribe button */}
+          <motion.div variants={fadeUp} className="pt-2">
             <button
               onClick={() => setModalOpen(true)}
-              className="cta-button-primary text-base md:text-lg shadow-glow-sm animate-glow-pulse"
+              className="cta-button-primary text-base shadow-glow-sm hover:shadow-glow-md"
             >
               Join the Transmission
             </button>
@@ -139,8 +142,8 @@ const HeroSection = () => {
           {/* Subscribe Modal */}
           <SubscribeModal open={modalOpen} onOpenChange={setModalOpen} />
 
-          {/* Topic pills - Centered with glass effect */}
-          <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-3 pt-2">
+          {/* Topic pills */}
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-3 pt-2">
             {["Market Systems", "AI & Tech", "Brokerage Intel"].map((t) => (
               <span
                 key={t}

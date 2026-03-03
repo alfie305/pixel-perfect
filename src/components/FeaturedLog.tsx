@@ -22,62 +22,61 @@ const FeaturedLog = () => {
   const readTime = getReadTime(post?.preview_text ?? post?.subtitle);
 
   return (
-    <section className="container mx-auto px-4 py-16 md:py-20">
+    <section className="container mx-auto px-4 py-16 md:py-20 max-w-6xl">
       <motion.div
-        className="mb-12 text-center"
+        className="mb-10 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="font-display font-bold text-3xl md:text-4xl text-ink mb-3">
+        <h2 className="font-display font-bold text-3xl md:text-4xl text-ink">
           Latest Field Log
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-orange to-transparent mx-auto" />
       </motion.div>
 
       <motion.div
-        className="glass-card-hover rounded-2xl overflow-hidden flex flex-col md:flex-row group shadow-lift max-w-5xl mx-auto"
-        initial={{ opacity: 0, y: 40 }}
+        className="glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row group max-w-5xl mx-auto transition-all duration-300 hover:shadow-clay-hover"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.75, delay: 0.1 }}
+        transition={{ duration: 0.65, delay: 0.1 }}
       >
         {/* Thumbnail */}
-        <div className="md:w-[45%] overflow-hidden relative">
+        <div className="md:w-[45%] overflow-hidden relative bg-card">
           {/* Latest Issue Badge */}
-          <div className="absolute top-4 left-4 z-10 bg-orange px-4 py-1.5 rounded-full shadow-glow-sm">
-            <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
+          <div className="absolute top-5 left-5 z-10 bg-orange px-4 py-1.5 rounded-lg">
+            <span className="font-mono text-[10px] font-bold text-white uppercase tracking-wider">
               Latest Issue
             </span>
           </div>
 
           {isLoading ? (
-            <div className="w-full h-[320px] md:h-full bg-card/50 animate-pulse" />
+            <div className="w-full h-[320px] md:h-full bg-card animate-pulse" />
           ) : post?.thumbnail_url ? (
             <motion.img
               src={post.thumbnail_url}
               alt={post.title ?? 'Featured log'}
-              className="w-full h-[320px] md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              initial={{ scale: 1.08 }}
-              whileInView={{ scale: 1 }}
+              className="w-full h-[320px] md:h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.6 }}
             />
           ) : (
-            <div className="w-full h-[320px] md:h-full bg-gradient-to-br from-orange/10 to-purple-500/10 flex items-center justify-center">
-              <span className="font-mono text-sm text-text-muted">No image yet</span>
+            <div className="w-full h-[320px] md:h-full bg-card/50 flex items-center justify-center">
+              <span className="font-mono text-xs text-text-muted">No image yet</span>
             </div>
           )}
         </div>
 
         {/* Content */}
         <motion.div
-          className="md:w-[55%] p-8 md:p-10 flex flex-col justify-center space-y-5"
-          initial={{ opacity: 0, x: 30 }}
+          className="md:w-[55%] p-8 md:p-10 lg:p-12 flex flex-col justify-center space-y-5"
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
         >
           {isLoading ? (
             <>
@@ -91,19 +90,19 @@ const FeaturedLog = () => {
           ) : post ? (
             <>
               {/* Meta info */}
-              <div className="flex items-center gap-4 flex-wrap">
-                <span className="font-mono text-xs text-orange">{formattedDate}</span>
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="font-mono text-[11px] text-orange uppercase tracking-wide">{formattedDate}</span>
                 <span className="w-1 h-1 rounded-full bg-border" />
-                <span className="font-mono text-xs text-text-muted">{readTime}</span>
+                <span className="font-mono text-[11px] text-text-muted uppercase tracking-wide">{readTime}</span>
               </div>
 
               {/* Title */}
-              <h3 className="font-display font-bold text-2xl md:text-3xl text-ink leading-tight">
+              <h3 className="font-display font-bold text-[26px] md:text-[28px] text-ink leading-tight">
                 {post.title}
               </h3>
 
               {/* Description */}
-              <p className="font-body text-text text-base leading-relaxed line-clamp-3">
+              <p className="font-body text-text text-[14px] leading-relaxed line-clamp-3 max-w-[90%]">
                 {post.subtitle ?? post.preview_text}
               </p>
 
@@ -112,10 +111,10 @@ const FeaturedLog = () => {
                 href={post.web_url ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="self-start group/btn inline-flex items-center gap-2 bg-orange hover:scale-105 text-white font-display font-bold text-sm px-6 py-3 rounded-lg border border-orange-dark transition-all duration-300 shadow-glow-sm hover:shadow-glow-md"
+                className="self-start group/btn inline-flex items-center gap-2 bg-orange text-white font-display font-bold text-sm px-7 py-3.5 rounded-xl transition-all duration-200 hover:translate-y-[-2px] hover:shadow-glow-sm"
               >
                 Read Full Log
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                <ArrowRight className="w-[15px] h-[15px] group-hover/btn:translate-x-1 transition-transform" strokeWidth={2.5} />
               </a>
             </>
           ) : (
