@@ -68,22 +68,18 @@ const TopicsFeature = () => (
         viewport={{ once: true, margin: '-80px' }}
         variants={stagger}
       >
-        <motion.div variants={fadeUp} className="text-[12px] text-text-light italic">
-          <span className="text-[16px]">🏷️</span> Topics
-        </motion.div>
-
         <motion.h2
           variants={fadeUp}
           className="font-display font-bold text-[38px] md:text-[44px] text-ink leading-tight"
         >
-          Feed your curiosity with PropTech Topics
+          Explore Intelligence by Topic
         </motion.h2>
 
         <motion.p
           variants={fadeUp}
           className="font-body text-[15px] md:text-[16px] text-text leading-relaxed"
-        >
-          Go beyond the weekly digest and explore thousands of articles, expertly curated across the verticals that matter most to real estate professionals.
+          >
+          Dive deep into AI strategies, market analysis, and brokerage intelligence. Thousands of articles curated across the verticals that give you an edge—searchable, organized, and ready when you need them.
         </motion.p>
 
         {/* Topics Grid */}

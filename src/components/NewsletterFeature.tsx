@@ -35,22 +35,18 @@ const NewsletterFeature = () => {
           viewport={{ once: true, margin: '-80px' }}
           variants={stagger}
         >
-          <motion.div variants={fadeUp} className="text-[12px] text-text-light italic">
-            <span className="text-[16px]">✉️</span> Weekly Digest
-          </motion.div>
-
           <motion.h2
             variants={fadeUp}
             className="font-display font-bold text-[38px] md:text-[44px] text-ink leading-tight"
           >
-            Stay ahead with the PropTech Pulse
+            The 5-Minute Read That Wins You More Clients, Deals & Authority
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="font-body text-[15px] md:text-[16px] text-text leading-relaxed"
           >
-            Get the most impactful stories in real estate technology delivered every week — curated, concise, and built for professionals who move fast.
+            Every week, get AI strategies, market intelligence, and proven tactics that turn knowledge into action. While other agents just read the news, you'll have the tools to dominate your market.
           </motion.p>
 
           {/* Avatars + Reader count */}
@@ -91,48 +87,17 @@ const NewsletterFeature = () => {
 
         {/* RIGHT: Newsletter Preview */}
         <motion.div
-          className="glass-card bg-paper p-6 md:p-8"
+          className="glass-card p-6 md:p-8"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          {/* Preview card content */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm">
-            {/* Header */}
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-11 h-11 bg-orange rounded-xl flex items-center justify-center shrink-0">
-                <span className="font-display font-bold text-[9px] text-white text-center leading-tight">
-                  PROP<br/>TECH<br/>PULSE
-                </span>
-              </div>
-              <div>
-                <div className="font-body font-semibold text-[13px] text-ink">
-                  PropTech Pulse Weekly
-                </div>
-                <div className="font-body text-[10px] text-text-light">
-                  No fluff · 100% free · Unsubscribe anytime
-                </div>
-              </div>
-            </div>
-
-            {/* Tag */}
-            <span className="inline-block bg-yellow-200 text-yellow-900 text-[10px] font-semibold px-2.5 py-1 rounded mb-2">
-              Must Know
-            </span>
-
-            {/* Headline */}
-            <h3 className="font-body font-semibold text-[13px] text-ink mb-2 leading-snug">
-              AI Is Reshaping How Brokerages Operate
-            </h3>
-
-            {/* Body */}
-            <p className="font-body text-[11px] text-text-mid leading-relaxed">
-              Major brokerages reported this week that AI-assisted transaction coordination has cut deal cycles by 30%. Early adopters are seeing measurable gains in agent productivity and client satisfaction scores, signaling a shift from experimentation to <a href="#" className="text-orange underline">full-scale deployment</a> across enterprise teams.
-              <br/><br/>
-              Meanwhile, several VC-backed PropTech startups announced Series B rounds totaling $280M, with a focus on <a href="#" className="text-orange underline">automated underwriting</a> and AI-native CRM platforms...
-            </p>
-          </div>
+          <img
+            src="/assets/newsletter-preview.png"
+            alt="Newsletter preview example"
+            className="w-full rounded-xl"
+          />
         </motion.div>
 
       </div>
