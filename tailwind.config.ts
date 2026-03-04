@@ -91,12 +91,22 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        // Claymorphism radii
+        'clay': '24px',
+        'clay-lg': '28px',
+        'clay-sm': '20px',
       },
       boxShadow: {
-        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        // Claymorphism shadows - optimized for light mode
+        'clay': '8px 8px 16px rgba(0, 0, 0, 0.08), -8px -8px 16px rgba(255, 255, 255, 0.9), inset -1px -1px 2px rgba(0, 0, 0, 0.05), inset 1px 1px 2px rgba(255, 255, 255, 0.9)',
+        'clay-sm': '4px 4px 8px rgba(0, 0, 0, 0.06), -4px -4px 8px rgba(255, 255, 255, 0.8), inset -1px -1px 1px rgba(0, 0, 0, 0.03), inset 1px 1px 1px rgba(255, 255, 255, 0.8)',
+        'clay-hover': '10px 10px 20px rgba(0, 0, 0, 0.12), -10px -10px 20px rgba(255, 255, 255, 1), inset -1px -1px 2px rgba(0, 0, 0, 0.06), inset 1px 1px 2px rgba(255, 255, 255, 1)',
+        'clay-pressed': '3px 3px 6px rgba(0, 0, 0, 0.2) inset, -3px -3px 6px rgba(0, 0, 0, 0.05) inset',
+        'clay-button': '6px 6px 12px rgba(0, 0, 0, 0.15), -6px -6px 12px rgba(255, 255, 255, 0.7), inset -1px -1px 2px rgba(0, 0, 0, 0.1), inset 1px 1px 2px rgba(255, 255, 255, 0.3)',
+        // Glow effects for brand color
         'glow-sm': '0 0 20px rgba(232, 153, 92, 0.3)',
         'glow-md': '0 0 40px rgba(232, 153, 92, 0.4)',
-        'lift': '0 10px 40px -10px rgba(0, 0, 0, 0.5)',
+        'lift': '0 10px 40px -10px rgba(0, 0, 0, 0.15)',
       },
       backdropBlur: {
         'xs': '2px',

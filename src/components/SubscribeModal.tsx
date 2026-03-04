@@ -168,7 +168,7 @@ const SubscribeModal = ({ open, onOpenChange }: SubscribeModalProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px] bg-paper border-2 border-ink p-0">
+      <DialogContent className="sm:max-w-[500px] glass-card border-2 border-border p-0 shadow-lift">
         {/* Progress bar */}
         <div className="w-full h-1 bg-gray-1 flex">
           {[1, 2, 3].map((s) => (

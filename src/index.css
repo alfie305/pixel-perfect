@@ -6,24 +6,24 @@
 
 @layer base {
   :root {
-    /* Light mode colors */
-    --background: 27 26% 89%;
+    /* Light mode colors - white background */
+    --background: 0 0% 100%;
     --foreground: 340 8% 35%;
 
-    --card: 30 14% 82%;
+    --card: 0 0% 92%;
     --card-foreground: 340 8% 35%;
 
-    --popover: 27 26% 89%;
+    --popover: 0 0% 100%;
     --popover-foreground: 340 8% 35%;
 
     --primary: 30 68% 64%;
     --primary-foreground: 27 26% 95%;
 
-    --secondary: 30 5% 77%;
+    --secondary: 0 0% 96%;
     --secondary-foreground: 340 8% 35%;
 
-    --muted: 30 10% 80%;
-    --muted-foreground: 0 2% 64%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
     --accent: 30 68% 64%;
     --accent-foreground: 27 26% 95%;
@@ -31,27 +31,27 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 336 7% 30%;
-    --input: 336 7% 30%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
     --ring: 30 68% 64%;
 
     --radius: 0.5rem;
 
     --ink: 336 7% 30%;
-    --paper: 27 26% 89%;
+    --paper: 0 0% 100%;
     --orange: 30 68% 64%;
     --orange-dark: 27 40% 50%;
     --text: 0 8% 36%;
     --gray-1: 20 4% 77%;
     --gray-2: 0 2% 64%;
 
-    --sidebar-background: 27 26% 89%;
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 340 8% 35%;
     --sidebar-primary: 30 68% 64%;
-    --sidebar-primary-foreground: 27 26% 95%;
-    --sidebar-accent: 30 10% 80%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 340 8% 35%;
-    --sidebar-border: 336 7% 30%;
+    --sidebar-border: 0 0% 90%;
     --sidebar-ring: 30 68% 64%;
   }
 
@@ -97,10 +97,6 @@
     --gray-1: 220 10% 30%;
     --gray-2: 220 8% 50%;
 
-    /* Glass morphism */
-    --glass-bg: 220 18% 12% / 0.7;
-    --glass-border: 220 30% 30% / 0.3;
-
     --sidebar-background: 220 18% 12%;
     --sidebar-foreground: 210 40% 96%;
     --sidebar-primary: 30 68% 64%;
@@ -119,12 +115,7 @@
 
   body {
     @apply text-foreground font-body transition-colors duration-300;
-    background: linear-gradient(135deg, #f5f0e8 0%, #e8dfd0 50%, #f5f0e8 100%);
-    background-image: url('./assets/bg-texture.png');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center top;
+    background: #ffffff;
   }
 
   body.dark {
@@ -141,12 +132,16 @@
 }
 
 @layer components {
+  /* Claymorphism card styling - optimized for light mode */
   .glass-card {
-    background: hsl(var(--glass-bg));
-    border: 1px solid hsl(var(--glass-border));
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 12px;
+    background: hsl(var(--card));
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 24px;
+    box-shadow:
+      8px 8px 16px rgba(0, 0, 0, 0.08),
+      -8px -8px 16px rgba(255, 255, 255, 0.9),
+      inset -1px -1px 2px rgba(0, 0, 0, 0.05),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.9);
   }
 
   .glass-card-hover {
@@ -154,22 +149,97 @@
   }
 
   .glass-card-hover:hover {
-    border-color: hsl(var(--orange) / 0.5);
-    box-shadow: 0 0 24px rgba(232, 153, 92, 0.2);
-    transform: translateY(-4px);
+    box-shadow:
+      10px 10px 20px rgba(0, 0, 0, 0.12),
+      -10px -10px 20px rgba(255, 255, 255, 1),
+      inset -1px -1px 2px rgba(0, 0, 0, 0.06),
+      inset 1px 1px 2px rgba(255, 255, 255, 1),
+      0 0 30px rgba(232, 153, 92, 0.2);
+    transform: translateY(-2px);
   }
 
   .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--ink)) 0%, hsl(var(--orange)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Claymorphism button with tactile depth - light mode */
+  .cta-button-primary {
+    @apply bg-orange text-white font-display font-bold px-8 py-4;
+    @apply transition-all duration-300;
+    border: none;
+    border-radius: 16px;
+    box-shadow:
+      6px 6px 12px rgba(0, 0, 0, 0.15),
+      -6px -6px 12px rgba(255, 255, 255, 0.7),
+      inset -1px -1px 2px rgba(0, 0, 0, 0.1),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      8px 8px 16px rgba(0, 0, 0, 0.2),
+      -8px -8px 16px rgba(255, 255, 255, 0.8),
+      inset -1px -1px 2px rgba(0, 0, 0, 0.12),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.4),
+      0 0 30px rgba(232, 153, 92, 0.5);
+  }
+
+  .cta-button-primary:active {
+    transform: translateY(0px);
+    box-shadow:
+      3px 3px 6px rgba(0, 0, 0, 0.2) inset,
+      -3px -3px 6px rgba(0, 0, 0, 0.05) inset;
+  }
+
+  /* Dark mode overrides */
+  .dark .glass-card {
+    box-shadow:
+      9px 9px 16px rgba(0, 0, 0, 0.25),
+      -9px -9px 16px rgba(255, 255, 255, 0.03),
+      inset 2px 2px 4px rgba(255, 255, 255, 0.05);
+  }
+
+  .dark .glass-card-hover:hover {
+    box-shadow:
+      12px 12px 20px rgba(0, 0, 0, 0.3),
+      -12px -12px 20px rgba(255, 255, 255, 0.04),
+      inset 2px 2px 4px rgba(255, 255, 255, 0.08),
+      0 0 40px rgba(232, 153, 92, 0.15);
+  }
+
+  .dark .gradient-text {
     background: linear-gradient(135deg, #ffffff 0%, hsl(var(--orange)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .cta-button-primary {
-    @apply bg-orange text-white font-display font-bold px-8 py-4 rounded-lg;
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-glow-md;
-    @apply border border-orange-dark;
+  .dark .cta-button-primary {
+    box-shadow:
+      6px 6px 12px rgba(0, 0, 0, 0.3),
+      -6px -6px 12px rgba(255, 255, 255, 0.02),
+      inset -2px -2px 4px rgba(0, 0, 0, 0.2),
+      inset 2px 2px 4px rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .cta-button-primary:hover {
+    box-shadow:
+      8px 8px 16px rgba(0, 0, 0, 0.35),
+      -8px -8px 16px rgba(255, 255, 255, 0.03),
+      inset -2px -2px 4px rgba(0, 0, 0, 0.2),
+      inset 2px 2px 4px rgba(255, 255, 255, 0.15),
+      0 0 30px rgba(232, 153, 92, 0.4);
+  }
+
+  .dark .cta-button-primary:active {
+    box-shadow:
+      4px 4px 8px rgba(0, 0, 0, 0.3),
+      -4px -4px 8px rgba(255, 255, 255, 0.02),
+      inset 2px 2px 4px rgba(0, 0, 0, 0.3);
   }
 }
 

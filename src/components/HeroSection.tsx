@@ -49,8 +49,6 @@ const HeroSection = () => {
               className="w-full h-auto drop-shadow-2xl"
             />
           </Tilt>
-          <span className="absolute -bottom-3 -left-3 text-gray-1 text-lg">·  ·  ·</span>
-          <span className="absolute top-1/4 -right-8 text-gray-1 text-sm">~ ~ ~</span>
         </motion.div>
 
         {/* Right: Content */}
@@ -89,7 +87,7 @@ const HeroSection = () => {
             variants={fadeUp}
             className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-tight text-ink"
           >
-            Operational Intelligence for Agents Navigating Chaos
+            The 5-Minute Brief That Makes You the Smartest Agent in the Room
           </motion.h1>
 
           {/* Subheadline */}
@@ -97,7 +95,7 @@ const HeroSection = () => {
             variants={fadeUp}
             className="font-body text-text text-lg md:text-xl leading-relaxed max-w-xl"
           >
-            Structured field logs analyzing market shifts, AI infrastructure, brokerage systems, and capital flows — decoded and delivered.
+            AI analyzes every market shift, tech adoption, and brokerage move—delivering actionable intelligence before your competition even sees it happening.
           </motion.p>
 
           {/* Latest issue link */}

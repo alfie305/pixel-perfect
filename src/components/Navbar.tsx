@@ -11,11 +11,11 @@ const navLinks = [
 ];
 
 const Logo = () => (
-  <div className="flex items-center gap-2">
-    <div className="w-8 h-8 rounded-full bg-orange flex items-center justify-center shrink-0 shadow-glow-sm">
+  <div className="flex items-center gap-2.5">
+    <div className="w-8 h-8 rounded-xl bg-orange flex items-center justify-center shrink-0">
       <span className="font-display font-bold text-[11px] text-white leading-none">TA</span>
     </div>
-    <span className="font-display font-bold text-xl text-ink">The Assignment</span>
+    <span className="font-display font-bold text-[19px] text-ink">The Assignment</span>
   </div>
 );
 
@@ -35,7 +35,7 @@ const Navbar = () => {
     <nav
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "backdrop-blur-lg bg-paper/80 shadow-lift border-b border-border/50"
+          ? "bg-card shadow-clay border-b border-border/30"
           : "bg-transparent"
       }`}
     >
@@ -43,7 +43,7 @@ const Navbar = () => {
         <Logo />
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {navLinks.map(({ label, to }) => (
             <Link
               key={to}
@@ -54,10 +54,10 @@ const Navbar = () => {
               spy
               activeClass="text-orange"
               onSetActive={() => setActiveSection(to)}
-              className="font-body text-sm text-text hover:text-orange transition-colors cursor-pointer relative group"
+              className="font-body text-[13px] text-text hover:text-orange transition-colors cursor-pointer relative group"
             >
               {label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-orange transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </div>
@@ -65,14 +65,14 @@ const Navbar = () => {
         {/* Desktop actions */}
         <div className="hidden md:flex items-center gap-3">
           <button className="text-ink hover:text-orange transition-colors p-2 hover:bg-orange/10 rounded-lg" aria-label="Search">
-            <Search className="w-5 h-5" />
+            <Search className="w-[18px] h-[18px]" strokeWidth={2} />
           </button>
           <Link
             to="bottom-cta"
             smooth
             duration={600}
             offset={-70}
-            className="bg-orange hover:scale-105 text-white font-display font-bold text-sm px-5 py-2.5 rounded-lg border border-orange-dark transition-all duration-300 cursor-pointer shadow-glow-sm hover:shadow-glow-md"
+            className="bg-orange text-white font-display font-bold text-[13px] px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer hover:translate-y-[-1px] hover:shadow-glow-sm"
           >
             Join Transmission
           </Link>
@@ -81,12 +81,12 @@ const Navbar = () => {
         {/* Mobile hamburger */}
         <div className="flex md:hidden items-center gap-3">
           <button className="text-ink hover:text-orange transition-colors p-2" aria-label="Search">
-            <Search className="w-5 h-5" />
+            <Search className="w-[18px] h-[18px]" strokeWidth={2} />
           </button>
           <Sheet>
             <SheetTrigger asChild>
               <button className="text-ink hover:text-orange transition-colors p-2" aria-label="Menu">
-                <Menu className="w-6 h-6" />
+                <Menu className="w-[22px] h-[22px]" strokeWidth={2} />
               </button>
             </SheetTrigger>
             <SheetContent side="right" className="glass-card border-l border-border w-[280px]">
@@ -101,8 +101,8 @@ const Navbar = () => {
                       duration={600}
                       offset={-70}
                       spy
-                      activeClass="bg-orange/20 text-orange border-orange/50"
-                      className="font-body text-base text-text hover:text-orange hover:bg-orange/10 transition-all cursor-pointer px-4 py-3 rounded-lg border border-transparent"
+                      activeClass="bg-orange/15 text-orange border-orange/40"
+                      className="font-body text-[14px] text-text hover:text-orange hover:bg-orange/10 transition-all cursor-pointer px-4 py-3 rounded-xl border border-transparent"
                     >
                       {label}
                     </Link>
@@ -114,7 +114,7 @@ const Navbar = () => {
                     smooth
                     duration={600}
                     offset={-70}
-                    className="block w-full text-center bg-orange hover:scale-105 text-white font-display font-bold text-sm px-4 py-3 rounded-lg border border-orange-dark transition-all duration-300 cursor-pointer shadow-glow-sm"
+                    className="block w-full text-center bg-orange text-white font-display font-bold text-[13px] px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer hover:translate-y-[-1px]"
                   >
                     Join Transmission
                   </Link>
