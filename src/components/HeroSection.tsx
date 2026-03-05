@@ -5,6 +5,7 @@ import CountUp from 'react-countup';
 import Tilt from 'react-parallax-tilt';
 import heroAstronaut from "@/assets/hero-astronaut.png";
 import SubscribeModal from './SubscribeModal';
+import { FlickeringGrid } from '@/components/ui/flickering-grid';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -25,7 +26,26 @@ const HeroSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section className="container mx-auto px-4 py-12 md:py-20">
+    <section className="relative overflow-hidden bg-white">
+      {/* Flickering grid background */}
+      <FlickeringGrid
+        className="absolute inset-0 z-0"
+        squareSize={4}
+        gridGap={6}
+        color="rgb(232, 153, 92)"
+        maxOpacity={0.40}
+        flickerChance={0.13}
+      />
+
+      {/* Gradient fade — only behind the text column, transparent everywhere else */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 40% 70% at 72% 50%, rgba(255,255,255,0.95) 30%, rgba(255,255,255,0.5) 65%, transparent 100%)',
+        }}
+      />
+
+      <div className="container mx-auto px-4 py-12 md:py-20 relative z-[2]">
       <div className="flex flex-col md:flex-row items-center gap-12">
 
         {/* Left: Illustration with 3D tilt */}
@@ -152,6 +172,7 @@ const HeroSection = () => {
             ))}
           </motion.div>
         </motion.div>
+      </div>
       </div>
     </section>
   );
